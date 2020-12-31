@@ -52,16 +52,16 @@ const Carousel = () => {
     <Container>
         <Slider {...settings}>
         <ImageContainer>
-            <img src={work1} />
+            <img alt='work' src={work1} />
           </ImageContainer>
           <ImageContainer>
-            <img src={work2} />
+            <img alt='work' src={work2} />
           </ImageContainer>
           <ImageContainer>
-            <img src={work3} />
+            <img alt='work' src={work3} />
           </ImageContainer>
           <ImageContainer>
-            <img src={work4} />
+            <img alt='work' src={work4} />
           </ImageContainer>
         </Slider>
       </Container>

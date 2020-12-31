@@ -20,7 +20,7 @@ const useTexture = (src) => {
 
   useEffect(()=> {
     loadTexture(src, setTexture)
-  }, [])
+  }, [src])
 
   return texture
 }

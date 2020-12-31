@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CubeLogo from '../components/CubeLogo'
 import Visualiser from '../components/Visualiser'
 import useWindowSize from '../hooks/useWindowSize'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
     const Section = styled.section`
     height: 100vh;

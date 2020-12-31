@@ -57,8 +57,7 @@ const Falling = ({song}) => {
         factor: Math.random(),
         rotation: [Math.sin(Math.random()) * Math.PI, Math.sin(Math.random()) * Math.PI, Math.cos(Math.random()) * Math.PI]
       }
-      )),
-    []
+      ))
     )
 
     useFrame(() => {
@@ -132,19 +131,19 @@ const Cloud = ({size, position}) => {
     })
 
     return mat
-  }, [])
+  })
 
   useEffect( () => {
     if (material) {
       material.uniforms.uTxtShape.value = t1
     }
-  }, [t1])
+  }, [t1, material])
 
   useEffect( () => {
     if (material) {
       material.uniforms.uTxtCloudNoise.value = t2
     }
-  }, [t2])
+  }, [t2, material])
 
   useFrame(()=> {
     if (material) {
@@ -180,7 +179,7 @@ const Background = styled.div`
   pointer-events: auto;
   z-index: -300;
 `;
-
+/*
 function Rig({ mouse }) {
   const { camera } = useThree()
   useFrame(() => {
@@ -190,14 +189,15 @@ function Rig({ mouse }) {
   })
   return null
 }
-
+*/
 //<Cloud size={[1, 1]} position={[0, 0, 0]}/>
 
 const Particle = (props) => {
-  const mouse = useRef([0, 0])
+  //const mouse = useRef([0, 0])
     return (
         <Background>
         <Canvas>
+        <Cloud size={[1, 1]} position={[0, 10, 0]}/>
         <ambientLight intensity={0.8}/>
         <Suspense fallback={null}>
         <Falling song={props.song}/>

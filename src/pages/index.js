@@ -12,32 +12,6 @@ let frequencyArray = [];
 let analyser;
 let source;
 
-const Section = styled.section`
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  left:0px;
-  top:0px;
-  display: flex;
-  justify-content: center;
-  canvas {
-    animation: rotate 20s linear infinite;
-    transform-origin: 50% 50%;
-  }
-  @keyframes rotate{
-	100% {
-    	transform: rotate(360deg);
-    }
-  }
-  img {
-                height: 40vh;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-  }
-`;
-
 const Pages = ({audio, song}) => {
    const [check, setCheck] = useState(false);
 

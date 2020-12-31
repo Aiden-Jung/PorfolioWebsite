@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 
-
 const Visualiser = ({song, analyser, frequencyArray, check}) => {
 
   const canvasRef = useRef(null);
@@ -11,15 +10,6 @@ const Visualiser = ({song, analyser, frequencyArray, check}) => {
   '#72d472',
   '#f08080',
   '#778899'];
-
-  useEffect(() => {if(check===true){
-    requestRef.current = requestAnimationFrame(drawCanvas);
-    console.log(analyser)
-    }
-    return () => {
-    cancelAnimationFrame(requestRef.current);
-    }
-  }, [check]);
 
   const drawCanvas = () => {
      
@@ -44,6 +34,14 @@ const Visualiser = ({song, analyser, frequencyArray, check}) => {
       requestRef.current = requestAnimationFrame(drawCanvas);
     }
   };
+
+  useEffect(() => {if(check===true){
+    requestRef.current = requestAnimationFrame(drawCanvas);
+    }
+    return () => {
+    cancelAnimationFrame(requestRef.current);
+    }
+  }, [check, analyser, drawCanvas]);
 
   const drawCircle = (canvas, ctx, radius, color) => {
     const centerX = window.innerWidth / 2;
