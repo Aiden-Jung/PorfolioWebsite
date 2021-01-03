@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Logo from './Logo'
+import Logo from '../Logo/Logo';
 
 const Navbar = styled.nav`
   position: fixed;
@@ -11,25 +11,26 @@ const Navbar = styled.nav`
   width: 100vw;
   background: transparent;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 100;
+  justify-content: space-between;
+  z-index: 1;
+  * {
+    margin: 0;
+  }
 `;
 
 const LogoWrapper = styled(Link)`
-  svg{
-    height: 40%;
-    position: absolute;
-       left: 100px;
-       top: 50%;
-       fill: white;
-       transform: translate(-50%, -50%);
+  height: 40%;
+  padding-left: 30px;
+  svg {
+    height: 100%;
+    fill: white;
   }
 `;
 
 const NavItems = styled.div`
-  padding-right: 1.5rem;
-  font-family: 'OpenSans'; 
+  padding-right: 20px;
+  font-family: 'OpenSans';
   font-size: 1rem;
 `;
 
@@ -42,10 +43,12 @@ const NavbarLink = styled(Link)`
 const Header = () => {
   return (
     <Navbar>
-      <LogoWrapper to='/'><Logo/></LogoWrapper>
+      <LogoWrapper to="/">
+        <Logo />
+      </LogoWrapper>
       <NavItems>
-        <NavbarLink to='/work'>Work</NavbarLink>
-        <NavbarLink to='/about'>About</NavbarLink>
+        <NavbarLink to="/project">Project</NavbarLink>
+        <NavbarLink to="/about">About</NavbarLink>
       </NavItems>
     </Navbar>
   );

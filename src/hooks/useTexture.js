@@ -1,28 +1,27 @@
-import {useState, useEffect} from 'react'
-import {Texture, LoadingManager, TextureLoader, RepeatWrapping} from 'three'
+import { useState, useEffect } from 'react';
+import { Texture, LoadingManager, TextureLoader, RepeatWrapping } from 'three';
 
-
-const loadingManager = new LoadingManager()
-const textureLoader = new TextureLoader(loadingManager)
+const loadingManager = new LoadingManager();
+const textureLoader = new TextureLoader(loadingManager);
 
 const loadTexture = (src, callback) => {
   const texture = textureLoader.load(src, () => {
-    typeof callback === 'function' && callback(texture)
-  })
+    typeof callback === 'function' && callback(texture);
+  });
 
-  texture.wrapS = texture.wrapT = RepeatWrapping
+  texture.wrapS = texture.wrapT = RepeatWrapping;
 
-  return texture
-}
+  return texture;
+};
 
 const useTexture = (src) => {
-  const [texture, setTexture] = useState(new Texture())
+  const [texture, setTexture] = useState(new Texture());
 
-  useEffect(()=> {
-    loadTexture(src, setTexture)
-  }, [src])
+  useEffect(() => {
+    loadTexture(src, setTexture);
+  }, [src]);
 
-  return texture
-}
+  return texture;
+};
 
 export default useTexture;
