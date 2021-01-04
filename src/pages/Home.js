@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 
 const Home = ({ song, analyser, frequencyArray, check }) => {
   const widthHeight = useWindowSize();
-  const color = ['#11114e', '#f6b2bd', '#72d472', '#f76c6b', '#778899'];
+  const color = ['#8cb4f7', '#f6b2bd', '#72d472', '#f76c6b', '#778899'];
 
   return (
     <Wrapper width={widthHeight[0]} height={widthHeight[1]} color={color[song]}>
