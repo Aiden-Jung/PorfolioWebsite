@@ -17,21 +17,19 @@ const Background = ({ song }) => {
   });
 
   return (
-    <>
-      <animated.div
-        style={{
-          position: 'fixed',
-          top: '0px',
-          left: '0px',
-          width: '100vw',
-          height: '100vh',
-          zIndex: '-500',
-          ...props,
-        }}
-      >
-        <Particle song={song} />
-      </animated.div>
-    </>
+    <animated.div
+      style={{
+        position: 'fixed',
+        top: '0px',
+        left: '0px',
+        width: '100vw',
+        height: '100vh',
+        zIndex: '-500',
+        ...props,
+      }}
+    >
+      <Particle song={song} />
+    </animated.div>
   );
 };
 

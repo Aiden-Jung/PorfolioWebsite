@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import Home from './Home';
 import Project from './Project';
 import About from './About';
 import Header from '../components/Header/Header';
-import { useSpring, useTransition, animated } from 'react-spring';
+import { useTransition, animated } from 'react-spring';
 
 const Pages = ({ audio, song, analyser, frequencyArray, check }) => {
   const location = useLocation();

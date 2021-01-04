@@ -23,17 +23,16 @@ const PlayerWrapper = styled.div`
     cursor: pointer;
     transition: 0.3s;
   }
-  button:hover {
-    opacity: 0.5;
-  }
   svg {
     height: 100%;
     width: 100%;
-    color: white;
   }
 `;
+//filter: drop-shadow(0 0 0.3rem ${(props) => props.color});
 
 const Player = ({ playing, list, song, audio, setSong, setPlaying }) => {
+  //const color = ['#11114e', '#f6b2bd', '#72d472', '#f76c6b', '#778899'];
+
   const playpause = () => {
     if (!playing) {
       audio.play();
@@ -70,19 +69,17 @@ const Player = ({ playing, list, song, audio, setSong, setPlaying }) => {
   };
 
   return (
-    <>
-      <PlayerWrapper>
-        <button onClick={backward}>
-          <FaBackward color="white" />
-        </button>
-        <button onClick={playpause}>
-          {!playing ? <FaPlay color="white" /> : <FaPause color="white" />}
-        </button>
-        <button onClick={forward}>
-          <FaForward color="white" />
-        </button>
-      </PlayerWrapper>
-    </>
+    <PlayerWrapper>
+      <button onClick={backward}>
+        <FaBackward color="white" />
+      </button>
+      <button onClick={playpause}>
+        {!playing ? <FaPlay color="white" /> : <FaPause color="white" />}
+      </button>
+      <button onClick={forward}>
+        <FaForward color="white" />
+      </button>
+    </PlayerWrapper>
   );
 };
 

@@ -30,7 +30,7 @@ const LogoWrapper = styled(Link)`
 
 const NavItems = styled.div`
   padding-right: 20px;
-  font-family: 'OpenSans';
+  font-family: 'Montserrat';
   font-size: 1rem;
 `;
 
