@@ -36,7 +36,7 @@ const Container = styled.div`
   path {
     fill: none;
     stroke: #fff;
-    animation: typography 5s forwards, fill 2s forwards 5s;
+    animation: typography 3s forwards, fill 1s forwards 3s;
   }
 
   path:nth-child(1) {
@@ -75,7 +75,7 @@ const Container = styled.div`
   }
 `;
 
-const Loading = ({ loading, setLoading, context }) => {
+const Loading = ({ loading, setLoading }) => {
   const [end, setEnd] = useState(false);
 
   const widthHeight = useWindowSize();
@@ -90,14 +90,8 @@ const Loading = ({ loading, setLoading, context }) => {
   useEffect(() => {
     setTimeout(() => {
       setEnd(true);
-    }, 5000);
+    }, 3000);
   }, []);
-
-  useEffect(() => {
-    return () => {
-      context.resume();
-    };
-  }, [loading]);
 
   const button = end ? (
     <button

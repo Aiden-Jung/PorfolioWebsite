@@ -50,6 +50,14 @@ function App() {
     };
   }, [playing]);
 
+  useEffect(() => {
+    if (!loading) {
+      context.resume();
+      audio.play();
+      setPlaying(true);
+    }
+  }, [loading]);
+
   const initAudio = () => {
     audio.crossOrigin = 'anonymous';
     audio.load();
@@ -66,7 +74,13 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Loading loading={loading} setLoading={setLoading} context={context} />
+      <Loading
+        loading={loading}
+        setLoading={setLoading}
+        context={context}
+        audio={audio}
+        setPlaying={setPlaying}
+      />
       <Background song={song} />
       <Player
         playing={playing}

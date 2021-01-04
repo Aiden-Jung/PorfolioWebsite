@@ -9,8 +9,9 @@ const TextWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'OpenSans';
-  background: transparent;
-  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  font-size: 150%;
   color: white;
   display: flex;
   flex-direction: column;
@@ -23,7 +24,7 @@ const TextWrapper = styled.div`
   }
 
   @media screen and (max-width: 650px), (max-height: 750px) {
-    font-size: 1rem;
+    font-size: 90%;
   }
 
   div {
