@@ -13,12 +13,15 @@ let source;
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
+  const [focus, setFocus] = useState(true);
   const [song, setSong] = useState(0);
   const [audio] = useState(new Audio(list[song]));
   const [check, setCheck] = useState(false);
-  const context = new (window.AudioContext || window.webkitAudioContext)();
+  //const context = new (window.AudioContext || window.webkitAudioContext)();
 
+  const [context, setContext] = useState(null);
+  /*
   useEffect(() => {
     initAudio();
     setCheck(true);
@@ -27,17 +30,20 @@ function App() {
       source.disconnect();
     };
   }, []);
-  /*
+  */
+
   useEffect(() => {
     const whenFocus = () => {
-      if (audio.paused && !playing) {
+      if (audio.paused && !playing && !focus) {
         audio.play();
+        setFocus(true);
       }
     };
 
     const whenBlur = () => {
-      if (!audio.paused && playing) {
+      if (!audio.paused && playing && focus) {
         audio.pause();
+        setFocus(false);
       }
     };
 
@@ -49,16 +55,30 @@ function App() {
       window.removeEventListener('blur', whenBlur);
     };
   }, [playing]);
-*/
+
   useEffect(() => {
     if (!loading) {
-      context.resume();
-      audio.play();
+      setContext(new (window.AudioContext || window.webkitAudioContext)());
     }
   }, [loading]);
 
+  useEffect(() => {
+    if (context) {
+      initAudio();
+      setCheck(true);
+      audio.play();
+    }
+    return () => {
+      if (context) {
+        analyser.disconnect();
+        source.disconnect();
+      }
+    };
+  }, [context]);
+
   const initAudio = () => {
-    audio.crossOrigin = 'anonymous';
+    //audio.crossOrigin = 'anonymous';
+    audio.preload = 'auto';
     audio.onplaying = () => {
       setPlaying(true);
     };
@@ -79,22 +99,14 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Loading
-        loading={loading}
-        setLoading={setLoading}
-        context={context}
-        audio={audio}
-        setPlaying={setPlaying}
-      />
+      <Loading loading={loading} setLoading={setLoading} />
       <Background song={song} />
       <Player
-        audio={audio}
         playing={playing}
         list={list}
         song={song}
         audio={audio}
         setSong={setSong}
-        setPlaying={setPlaying}
       />
       <Router>
         <Pages

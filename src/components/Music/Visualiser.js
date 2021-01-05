@@ -88,8 +88,8 @@ class Visualiser extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.check !== this.props.check) {
+  componentDidUpdate() {
+    if (this.props.check) {
       this.rafId = requestAnimationFrame(() => {
         this.animationLooper(this.canvas.current);
       });

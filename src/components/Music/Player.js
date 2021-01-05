@@ -30,7 +30,7 @@ const PlayerWrapper = styled.div`
 `;
 //filter: drop-shadow(0 0 0.3rem ${(props) => props.color});
 
-const Player = ({ playing, list, song, audio, setSong, setPlaying }) => {
+const Player = ({ playing, list, song, audio, setSong }) => {
   //const color = ['#11114e', '#f6b2bd', '#72d472', '#f76c6b', '#778899'];
 
   const playpause = () => {
