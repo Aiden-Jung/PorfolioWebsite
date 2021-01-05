@@ -77,7 +77,7 @@ const Carousel = () => {
         <Slider {...settings}>
           <ImageContainer>
             <a href="https://github.com/Aiden-Jung/PorfolioWebsite">
-              <img src={work[0]} />
+              <img alt="work1" src={work[0]} />
             </a>
           </ImageContainer>
           <div className="progress">In Progress...</div>

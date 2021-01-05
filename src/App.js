@@ -30,13 +30,13 @@ function App() {
 
   useEffect(() => {
     const whenFocus = () => {
-      if (playing) {
+      if (audio.paused && !playing) {
         audio.play();
       }
     };
 
     const whenBlur = () => {
-      if (playing) {
+      if (!audio.paused && playing) {
         audio.pause();
       }
     };
@@ -60,6 +60,12 @@ function App() {
 
   const initAudio = () => {
     audio.crossOrigin = 'anonymous';
+    audio.onplaying = () => {
+      setPlaying(true);
+    };
+    audio.onpause = () => {
+      setPlaying(false);
+    };
     audio.load();
 
     analyser = context.createAnalyser();
@@ -83,6 +89,7 @@ function App() {
       />
       <Background song={song} />
       <Player
+        audio={audio}
         playing={playing}
         list={list}
         song={song}

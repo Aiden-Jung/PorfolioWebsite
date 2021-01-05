@@ -34,12 +34,12 @@ const Player = ({ playing, list, song, audio, setSong, setPlaying }) => {
   //const color = ['#11114e', '#f6b2bd', '#72d472', '#f76c6b', '#778899'];
 
   const playpause = () => {
-    if (!playing) {
+    if (audio.paused && !playing) {
       audio.play();
-    } else {
+    }
+    if (!audio.paused && playing) {
       audio.pause();
     }
-    setPlaying(!playing);
   };
 
   const forward = () => {

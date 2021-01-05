@@ -36,7 +36,7 @@ const Container = styled.div`
   path {
     fill: none;
     stroke: #fff;
-    animation: typography 3s forwards, fill 1s forwards 3s;
+    animation: typography 5s forwards, fill 2s forwards 5s;
   }
 
   path:nth-child(1) {
@@ -90,7 +90,7 @@ const Loading = ({ loading, setLoading }) => {
   useEffect(() => {
     setTimeout(() => {
       setEnd(true);
-    }, 3000);
+    }, 5000);
   }, []);
 
   const button = end ? (
