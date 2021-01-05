@@ -27,7 +27,7 @@ function App() {
       source.disconnect();
     };
   }, []);
-
+  /*
   useEffect(() => {
     const whenFocus = () => {
       if (audio.paused && !playing) {
@@ -49,12 +49,11 @@ function App() {
       window.removeEventListener('blur', whenBlur);
     };
   }, [playing]);
-
+*/
   useEffect(() => {
     if (!loading) {
       context.resume();
       audio.play();
-      setPlaying(true);
     }
   }, [loading]);
 
