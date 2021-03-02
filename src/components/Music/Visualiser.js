@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 
 const bars = 128;
-const bar_width = 3;
+const bar_width = 4;
 const color = ['#dae7ff', '#ffe8f8', '#d9fcdf', '#fcd9d9', '#e0e0e0'];
 
 class Visualiser extends Component {
@@ -46,9 +46,9 @@ class Visualiser extends Component {
       const endY = Math.sin(rads * i) * (radius + bar_height);
 
       //latency in mobile
-      //this.drawCircle(ctx, radius - 5, this.props.color);
+      //this.drawCircle(ctx, radius - 5);
 
-      this.drawBar(x, y, endX, endY, ctx, this.props.color);
+      this.drawBar(x, y, endX, endY, ctx);
     }
     this.rafId = requestAnimationFrame(() => {
       this.animationLooper(canvas);
@@ -66,11 +66,13 @@ class Visualiser extends Component {
     ctx.lineWidth = 3;
     ctx.stroke();
   }
-  */
+*/
   drawBar(x, y, endX, endY, ctx) {
     //latency in mobile
-    //ctx.shadowColor = color;
-    //ctx.shadowBlur = 3;
+    /*
+    ctx.shadowColor = color[this.props.song];
+    ctx.shadowBlur = 7;
+    */
     ctx.strokeStyle = color[this.props.song];
     ctx.lineWidth = bar_width;
     ctx.lineCap = 'round';

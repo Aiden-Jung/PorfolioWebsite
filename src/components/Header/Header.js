@@ -20,7 +20,7 @@ const Navbar = styled.nav`
 `;
 
 const LogoWrapper = styled(Link)`
-  height: 40%;
+  height: 50%;
   padding-left: 30px;
   svg {
     height: 100%;
@@ -31,13 +31,13 @@ const LogoWrapper = styled(Link)`
 const NavItems = styled.div`
   padding-right: 20px;
   font-family: 'Montserrat';
-  font-size: 1rem;
+  font-size: 1.25rem;
 `;
 
 const NavbarLink = styled(Link)`
   color: #fff;
   text-decoration: none;
-  padding: 1rem;
+  padding: 1.25rem;
 `;
 
 const Header = () => {

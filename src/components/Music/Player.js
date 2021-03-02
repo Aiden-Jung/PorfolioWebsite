@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FaPlay, FaPause, FaBackward, FaForward } from 'react-icons/fa';
 
 const PlayerWrapper = styled.div`
-  height: 55px;
+  height: 75px;
   width: 100vw;
   position: fixed;
   bottom: 0px;

@@ -6,6 +6,7 @@ import Background from './components/Background';
 import Loading from './pages/Loading';
 import Pages from './pages/index';
 import Player from './components/Music/Player';
+import useFocus from './hooks/useFocus';
 
 let frequencyArray = [];
 let analyser;
@@ -14,13 +15,13 @@ let source;
 function App() {
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState(true);
-  const [focus, setFocus] = useState(true);
   const [song, setSong] = useState(0);
   const [audio] = useState(new Audio(list[song]));
   const [check, setCheck] = useState(false);
   //const context = new (window.AudioContext || window.webkitAudioContext)();
 
   const [context, setContext] = useState(null);
+  const focus = useFocus();
   /*
   useEffect(() => {
     initAudio();
@@ -32,18 +33,24 @@ function App() {
   }, []);
   */
 
+  /*
   useEffect(() => {
     const whenFocus = () => {
       if (audio.paused && !playing && !focus) {
         audio.play();
         setFocus(true);
+        console.log('focus');
       }
+      console.log(audio.paused);
+      console.log(playing);
+      console.log(focus);
     };
 
     const whenBlur = () => {
       if (!audio.paused && playing && focus) {
         audio.pause();
         setFocus(false);
+        console.log('blur');
       }
     };
 
@@ -51,10 +58,21 @@ function App() {
     window.addEventListener('blur', whenBlur);
 
     return () => {
-      window.removeEventListener('focus', whenFocus);
-      window.removeEventListener('blur', whenBlur);
+      //window.removeEventListener('focus', whenFocus);
+      //window.removeEventListener('blur', whenBlur);
     };
-  }, [playing]);
+  }, []);
+*/
+
+  useEffect(() => {
+    if (focus) {
+      audio.play();
+    }
+    if (!focus) {
+      audio.pause();
+    }
+    return () => {};
+  }, [focus]);
 
   useEffect(() => {
     if (!loading) {
